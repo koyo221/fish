@@ -14,12 +14,15 @@ export default Vue.extend({
     return {
       fish: '><>',
       message: '',
-      moving: false
+      moving: false,
+      clicked: false
     }
   },
 
   methods: {
     async onClick() {
+      if (this.clicked) return;
+      this.clicked = true;
       this.message = 'hi'
       await this.sleep(2000)
       this.message = 'hope you have a good day'
