@@ -20,6 +20,7 @@ export default Vue.extend({
       left: 0,
       top: 0,
       gameEnd: false,
+      fishMoving: false,
     }
   },
 
@@ -34,6 +35,8 @@ export default Vue.extend({
      * Event Listener on FishComponent
      */
     onFishClick() {
+      if (this.fishMoving) return;
+      this.fishMoving = true;
       const interval = setInterval(async () => {
         this.left += 0.1
         this.fishPositionStyle = this.createFishPosition()
@@ -63,8 +66,10 @@ export default Vue.extend({
 
 <style scoped>
 .sea {
-  min-height: 100vh;
-  min-width: 100vh;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
 }
 
 .fish-position {
@@ -72,8 +77,8 @@ export default Vue.extend({
 }
 
 .game-end {
-  min-height: 100vh;
-  min-width: 100vh;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,6 +1,6 @@
 <template>
   <button>
-    <p @click="onClick()">
+    <p :class="moving ? 'nowrap' : 'wrap'" @click="onClick()">
       {{ fish }}
       <span v-if="message" class="message">{{ message }}</span>
     </p>
@@ -14,6 +14,7 @@ export default Vue.extend({
     return {
       fish: '><>',
       message: '',
+      moving: false
     }
   },
 
@@ -23,6 +24,7 @@ export default Vue.extend({
       await this.sleep(2000)
       this.message = 'hope you have a good day'
       await this.sleep(2000)
+      this.moving = true;
       this.message = ''
       this.$emit('onFishClick')
     },
@@ -35,8 +37,12 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-p {
+.nowrap {
   white-space: nowrap;
+}
+
+.wrap {
+  white-space: wrap;
 }
 
 .message {

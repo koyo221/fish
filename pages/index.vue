@@ -31,7 +31,8 @@ export default Vue.extend({
 
 <style scoped>
 .world {
-  min-height: 100vh;
-  min-width: 100vh;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 </style>
